@@ -33,6 +33,8 @@ urlpatterns = [
     # Override email confirm to use allauth's HTML view instead of rest_auth's API view
     path("rest-auth/registration/account-confirm-email/<str:key>/", confirm_email),
     path("rest-auth/registration/", include("rest_auth.registration.urls")),
+    path("home/", include("home.urls")),
+    path("api/v1/", include("store.api.v1.urls")),
 ]
 
 admin.site.site_header = "Backend Deploy 0330"
@@ -55,4 +57,3 @@ schema_view = get_schema_view(
 urlpatterns += [
     path("api-docs/", schema_view.with_ui("swagger", cache_timeout=0), name="api_docs")
 ]
-
